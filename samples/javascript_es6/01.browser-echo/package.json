@@ -15,7 +15,7 @@
         "@babel/runtime": "^7.1.5",
         "botbuilder-core": "~4.13.2",
         "botframework-directlinejs": "~0.11.2",
-        "botframework-webchat": "4.5.0",
+        "botframework-webchat": "4.7.0",
         "core-js": "^3.0.1"
     },
     "devDependencies": {
@@ -30,7 +30,7 @@
         "copy-webpack-plugin": "^5.0.3",
         "core-js": "^3.1.4",
         "css-loader": "^3.0.0",
-        "eslint": "^6.0.1",
+        "eslint": "^7.16.0",
         "eslint-config-standard": "^13.0.1",
         "eslint-plugin-import": "^2.18.0",
         "eslint-plugin-node": "^9.1.0",
@@ -39,7 +39,7 @@
         "regenerator-runtime": "^0.13.2",
         "style-loader": "^0.23.1",
         "webpack": "^4.35.3",
-        "webpack-cli": "^3.3.6",
-        "webpack-dev-server": "^3.7.2"
+        "webpack-cli": "^4.0.0",
+        "webpack-dev-server": "^4.0.0"
     }
 }
