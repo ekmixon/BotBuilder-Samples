@@ -12,7 +12,7 @@
 		"url": "https://github.com/Microsoft/BotBuilder-Samples"
 	},
 	"dependencies": {
-		"@microsoft/bf-lu": "~4.13.0",
+		"@microsoft/bf-lu": "~4.14.0",
 		"botbuilder-lg": "~4.13.2",
 		"vscode-languageserver": "6.1.1",
 		"vscode-languageserver-protocol": "3.15.3",
