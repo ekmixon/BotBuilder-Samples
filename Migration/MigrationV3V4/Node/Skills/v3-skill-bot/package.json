@@ -8,9 +8,9 @@
     "start": "node ./app.js"
   },
   "dependencies": {
-    "async": "^1.5.2",
+    "async": "^3.2.2",
     "base64url": "^3.0.0",
-    "botbuilder": "^3.30.0",
+    "botbuilder": "^4.0.6",
     "busboy": "^0.2.13",
     "chrono-node": "^1.2.5",
     "dotenv": "^8.2.0",
