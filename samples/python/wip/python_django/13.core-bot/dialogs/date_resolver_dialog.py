@@ -28,11 +28,13 @@ class DateResolverDialog(CancelAndHelpDialog):
         )
         self.add_dialog(
             WaterfallDialog(
-                WaterfallDialog.__name__ + "2", [self.initial_step, self.final_step]
+                f"{WaterfallDialog.__name__}2",
+                [self.initial_step, self.final_step],
             )
         )
 
-        self.initial_dialog_id = WaterfallDialog.__name__ + "2"
+
+        self.initial_dialog_id = f"{WaterfallDialog.__name__}2"
 
     async def initial_step(
         self, step_context: WaterfallStepContext
@@ -40,30 +42,30 @@ class DateResolverDialog(CancelAndHelpDialog):
         """Prompt for the date."""
         timex = step_context.options
 
-        prompt_msg = "On what date would you like to travel?"
         reprompt_msg = (
             "I'm sorry, for best results, please enter your travel "
             "date including the month, day and year."
         )
 
-        if timex is None:
-            # We were not given any date at all so prompt the user.
-            return await step_context.prompt(
-                DateTimePrompt.__name__,
-                PromptOptions(  # pylint: disable=bad-continuation
-                    prompt=MessageFactory.text(prompt_msg),
-                    retry_prompt=MessageFactory.text(reprompt_msg),
-                ),
-            )
-        else:
+        if timex is not None:
             # We have a Date we just need to check it is unambiguous.
-            if "definite" in Timex(timex).types:
-                # This is essentially a "reprompt" of the data we were given up front.
-                return await step_context.prompt(
+            return (
+                await step_context.prompt(
                     DateTimePrompt.__name__, PromptOptions(prompt=reprompt_msg)
                 )
-            else:
-                return await step_context.next(DateTimeResolution(timex=timex))
+                if "definite" in Timex(timex).types
+                else await step_context.next(DateTimeResolution(timex=timex))
+            )
+
+        prompt_msg = "On what date would you like to travel?"
+        # We were not given any date at all so prompt the user.
+        return await step_context.prompt(
+            DateTimePrompt.__name__,
+            PromptOptions(  # pylint: disable=bad-continuation
+                prompt=MessageFactory.text(prompt_msg),
+                retry_prompt=MessageFactory.text(reprompt_msg),
+            ),
+        )
 
     async def final_step(self, step_context: WaterfallStepContext):
         """Cleanup - set final return value and end dialog."""

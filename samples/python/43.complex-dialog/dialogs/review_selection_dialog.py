@@ -75,10 +75,7 @@ class ReviewSelectionDialog(ComponentDialog):
         return await step_context.prompt(ChoicePrompt.__name__, prompt_options)
 
     def _to_choices(self, choices: [str]) -> List[Choice]:
-        choice_list: List[Choice] = []
-        for choice in choices:
-            choice_list.append(Choice(value=choice))
-        return choice_list
+        return [Choice(value=choice) for choice in choices]
 
     async def loop_step(self, step_context: WaterfallStepContext) -> DialogTurnResult:
         selected: List[str] = step_context.values[self.COMPANIES_SELECTED]

@@ -78,13 +78,15 @@ class RootBot(ActivityHandler):
         eoc_activity_message = f"Received {ActivityTypes.end_of_conversation}.\n\nCode: {turn_context.activity.code}"
         if turn_context.activity.text:
             eoc_activity_message = (
-                eoc_activity_message + f"\n\nText: {turn_context.activity.text}"
+                f"{eoc_activity_message}\n\nText: {turn_context.activity.text}"
             )
+
 
         if turn_context.activity.value:
             eoc_activity_message = (
-                eoc_activity_message + f"\n\nValue: {turn_context.activity.value}"
+                f"{eoc_activity_message}\n\nValue: {turn_context.activity.value}"
             )
+
 
         await turn_context.send_activity(eoc_activity_message)
 

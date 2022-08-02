@@ -50,15 +50,14 @@ class ActivityRouterDialog(ComponentDialog):
             return await self._on_event_activity(step_context)
         if current_activity_type == ActivityTypes.message:
             return await self._on_message_activity(step_context)
-        else:
-            # We didn't get an activity type we can handle.
-            await step_context.context.send_activity(
-                MessageFactory.text(
-                    f'Unrecognized ActivityType: "{current_activity_type}".',
-                    input_hint=InputHints.ignoring_input,
-                )
+        # We didn't get an activity type we can handle.
+        await step_context.context.send_activity(
+            MessageFactory.text(
+                f'Unrecognized ActivityType: "{current_activity_type}".',
+                input_hint=InputHints.ignoring_input,
             )
-            return DialogTurnResult(DialogTurnStatus.Complete)
+        )
+        return DialogTurnResult(DialogTurnStatus.Complete)
 
     async def _on_event_activity(
         self, step_context: WaterfallStepContext

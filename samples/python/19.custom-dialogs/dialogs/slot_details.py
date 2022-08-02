@@ -16,13 +16,9 @@ class SlotDetails:
     ):
         self.name = name
         self.dialog_id = dialog_id
-        self.options = (
-            options
-            if options
-            else PromptOptions(
-                prompt=MessageFactory.text(prompt),
-                retry_prompt=None
-                if retry_prompt is None
-                else MessageFactory.text(retry_prompt),
-            )
+        self.options = options or PromptOptions(
+            prompt=MessageFactory.text(prompt),
+            retry_prompt=None
+            if retry_prompt is None
+            else MessageFactory.text(retry_prompt),
         )

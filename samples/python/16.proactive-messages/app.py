@@ -61,12 +61,12 @@ ADAPTER.on_turn_error = on_error
 
 # Create a shared dictionary.  The Bot will add conversation references when users
 # join the conversation and send messages.
-CONVERSATION_REFERENCES: Dict[str, ConversationReference] = dict()
+CONVERSATION_REFERENCES: Dict[str, ConversationReference] = {}
 
 # If the channel is the Emulator, and authentication is not in use, the AppId will be null.
 # We generate a random AppId for this case only. This is not required for production, since
 # the AppId will have a value.
-APP_ID = SETTINGS.app_id if SETTINGS.app_id else uuid.uuid4()
+APP_ID = SETTINGS.app_id or uuid.uuid4()
 
 # Create the Bot
 BOT = ProactiveBot(CONVERSATION_REFERENCES)

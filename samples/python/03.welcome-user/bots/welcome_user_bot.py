@@ -70,8 +70,9 @@ class WelcomeUserBot(ActivityHandler):
         for member in members_added:
             if member.id != turn_context.activity.recipient.id:
                 await turn_context.send_activity(
-                    f"Hi there { member.name }. " + self.WELCOME_MESSAGE
+                    f"Hi there {member.name}. {self.WELCOME_MESSAGE}"
                 )
+
 
                 await turn_context.send_activity(self.INFO_MESSAGE)
 

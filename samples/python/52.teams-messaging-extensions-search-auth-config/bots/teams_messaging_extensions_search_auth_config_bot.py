@@ -132,12 +132,7 @@ class TeamsMessagingExtensionsSearchAuthConfigBot(TeamsActivityHandler):
         query: MessagingExtensionQuery,
         search_query: str,
     ) -> MessagingExtensionResponse:
-        # When the Bot Service Auth flow completes, the action.State will contain
-        # a magic code used for verification.
-        magic_code = ""
-        if query.state is not None:
-            magic_code = query.state
-
+        magic_code = query.state if query.state is not None else ""
         token_response = await turn_context.adapter.get_user_token(
             turn_context, self.connection_name, magic_code
         )

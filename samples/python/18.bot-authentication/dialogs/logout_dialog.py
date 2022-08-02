@@ -14,15 +14,11 @@ class LogoutDialog(ComponentDialog):
 
     async def on_begin_dialog(self, inner_dc: DialogContext, options: object) -> DialogTurnResult:
         result = await self._interrupt(inner_dc)
-        if result:
-            return result
-        return await super().on_begin_dialog(inner_dc, options)
+        return result or await super().on_begin_dialog(inner_dc, options)
 
     async def on_continue_dialog(self, inner_dc: DialogContext) -> DialogTurnResult:
         result = await self._interrupt(inner_dc)
-        if result:
-            return result
-        return await super().on_continue_dialog(inner_dc)
+        return result or await super().on_continue_dialog(inner_dc)
 
     async def _interrupt(self, inner_dc: DialogContext):
         if inner_dc.context.activity.type == ActivityTypes.message:

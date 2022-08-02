@@ -42,7 +42,7 @@ class LinkUnfurlingBot(TeamsActivityHandler):
         self, turn_context: TurnContext, query: MessagingExtensionQuery
     ):
         # These commandIds are defined in the Teams App Manifest.
-        if not query.command_id == "searchQuery":
+        if query.command_id != "searchQuery":
             raise NotImplementedError(f"Invalid CommandId: {query.command_id}")
 
         card = HeroCard(

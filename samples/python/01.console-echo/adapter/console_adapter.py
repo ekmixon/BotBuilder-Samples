@@ -84,9 +84,7 @@ class ConsoleAdapter(BotAdapter):
         """
         while True:
             msg = input()
-            if msg is None:
-                pass
-            else:
+            if msg is not None:
                 self._next_id += 1
                 activity = Activity(
                     text=msg,
@@ -120,7 +118,7 @@ class ConsoleAdapter(BotAdapter):
             raise TypeError(
                 "ConsoleAdapter.send_activities(): `activities` argument must be a list."
             )
-        if len(activities) == 0:
+        if not activities:
             raise ValueError(
                 "ConsoleAdapter.send_activities(): `activities` argument cannot have a length of 0."
             )

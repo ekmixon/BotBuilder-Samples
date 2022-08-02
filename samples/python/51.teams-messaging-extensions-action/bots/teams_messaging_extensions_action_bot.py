@@ -58,7 +58,7 @@ class TeamsMessagingExtensionsActionBot(TeamsActivityHandler):
         text = action.message_payload.body.content
         card = HeroCard(title=title, text=text)
 
-        if not action.message_payload.attachments is None:
+        if action.message_payload.attachments is not None:
             # This sample does not add the MessagePayload Attachments.  This is left as an
             #  exercise for the user.
             card.subtitle = (

@@ -59,16 +59,18 @@ class TeamsTaskModuleBot(TeamsActivityHandler):
         task_info = TaskModuleTaskInfo()
         if card_task_fetch_value == TaskModuleIds.YOUTUBE:
             # Display the YouTube.html page
-            task_info.url = task_info.fallback_url = (
-                self.__base_url + "/" + TaskModuleIds.YOUTUBE + ".html"
-            )
+            task_info.url = (
+                task_info.fallback_url
+            ) = f"{self.__base_url}/{TaskModuleIds.YOUTUBE}.html"
+
             TeamsTaskModuleBot.__set_task_info(task_info, TaskModuleUIConstants.YOUTUBE)
         elif card_task_fetch_value == TaskModuleIds.CUSTOM_FORM:
             # Display the CustomForm.html page, and post the form data back via
             # on_teams_task_module_submit.
-            task_info.url = task_info.fallback_url = (
-                self.__base_url + "/" + TaskModuleIds.CUSTOM_FORM + ".html"
-            )
+            task_info.url = (
+                task_info.fallback_url
+            ) = f"{self.__base_url}/{TaskModuleIds.CUSTOM_FORM}.html"
+
             TeamsTaskModuleBot.__set_task_info(
                 task_info, TaskModuleUIConstants.CUSTOM_FORM
             )

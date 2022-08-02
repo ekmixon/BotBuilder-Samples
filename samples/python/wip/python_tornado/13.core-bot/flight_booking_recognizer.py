@@ -9,17 +9,17 @@ class FlightBookingRecognizer(Recognizer):
     def __init__(self, configuration: object):
         self._recognizer = None
 
-        luis_is_configured = (
+        if luis_is_configured := (
             configuration.luis_app_id
             and configuration.luis_api_key
             and configuration.luis_api_host_name
-        )
-        if luis_is_configured:
+        ):
             luis_application = LuisApplication(
                 configuration.luis_app_id,
                 configuration.luis_api_key,
-                "https://" + configuration.luis_api_host_name,
+                f"https://{configuration.luis_api_host_name}",
             )
+
 
             self._recognizer = LuisRecognizer(luis_application)
 

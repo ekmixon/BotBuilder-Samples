@@ -28,11 +28,13 @@ class DateResolverDialog(CancelAndHelpDialog):
         )
         self.add_dialog(
             WaterfallDialog(
-                WaterfallDialog.__name__ + "2", [self.initial_step, self.final_step]
+                f"{WaterfallDialog.__name__}2",
+                [self.initial_step, self.final_step],
             )
         )
 
-        self.initial_dialog_id = WaterfallDialog.__name__ + "2"
+
+        self.initial_dialog_id = f"{WaterfallDialog.__name__}2"
 
     async def initial_step(
         self, step_context: WaterfallStepContext

@@ -28,11 +28,13 @@ class DateResolverDialog(CancelAndHelpDialog):
         )
         self.add_dialog(
             WaterfallDialog(
-                WaterfallDialog.__name__ + "2", [self.initial_step, self.final_step]
+                f"{WaterfallDialog.__name__}2",
+                [self.initial_step, self.final_step],
             )
         )
 
-        self.initial_dialog_id = WaterfallDialog.__name__ + "2"
+
+        self.initial_dialog_id = f"{WaterfallDialog.__name__}2"
 
     async def initial_step(
         self, step_context: WaterfallStepContext
@@ -45,7 +47,7 @@ class DateResolverDialog(CancelAndHelpDialog):
         )
 
         reprompt_msg_text = "I'm sorry, for best results, please enter your travel date " \
-                            "including the month, day and year."
+                                "including the month, day and year."
         reprompt_msg = MessageFactory.text(
             reprompt_msg_text, reprompt_msg_text, InputHints.expecting_input
         )

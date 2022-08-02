@@ -26,8 +26,9 @@ class DispatchBot(ActivityHandler):
         luis_application = LuisApplication(
             config.LUIS_APP_ID,
             config.LUIS_API_KEY,
-            "https://" + config.LUIS_API_HOST_NAME,
+            f"https://{config.LUIS_API_HOST_NAME}",
         )
+
         luis_options = LuisPredictionOptions(
             include_all_intents=True, include_instance_data=True
         )

@@ -11,6 +11,6 @@ class Location:
         self.postal_code = postal_code
 
     def from_json(self, json: dict):
-        self.latitude = json.get("latitude", None)
-        self.longitude = json.get("longitude", None)
-        self.postal_code = json.get("postal_code", None)
+        self.latitude = json.get("latitude")
+        self.longitude = json.get("longitude")
+        self.postal_code = json.get("postal_code")
