@@ -31,14 +31,14 @@ class TeamsMessagingExtensionsActionPreviewBot(TeamsActivityHandler):
             reply = MessageFactory.text(
                 f"{turn_context.activity.from_property.name} answered '{answer}' and chose '{choices}'."
             )
-            await turn_context.send_activity(reply)
         else:
             # This is a regular text message from the user.
             reply = MessageFactory.text(
                 "Hello from TeamsMessagingExtensionsActionPreviewBot. Please refer to the bot sample's Readme for "
                 "instructions. "
             )
-            await turn_context.send_activity(reply)
+
+        await turn_context.send_activity(reply)
 
     async def on_teams_messaging_extension_fetch_task(
         self, turn_context: TurnContext, action: MessagingExtensionAction

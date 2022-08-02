@@ -36,24 +36,18 @@ class LuisHelper:
                     reverse=True,
                 )[:1][0]
                 if intent == "Book_flight":
-                    # We need to get the result from the LUIS JSON which at every level returns an array.
-                    to_entities = recognizer_result.entities.get("$instance", {}).get(
-                        "To", []
-                    )
-                    if to_entities:
+                    if to_entities := recognizer_result.entities.get(
+                        "$instance", {}
+                    ).get("To", []):
                         booking_details.destination = to_entities[0]["text"]
-                    from_entities = recognizer_result.entities.get("$instance", {}).get(
-                        "From", []
-                    )
-                    if from_entities:
+                    if from_entities := recognizer_result.entities.get(
+                        "$instance", {}
+                    ).get("From", []):
                         booking_details.origin = from_entities[0]["text"]
 
-                    # This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
-                    # TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
-                    date_entities = recognizer_result.entities.get("$instance", {}).get(
-                        "datetime", []
-                    )
-                    if date_entities:
+                    if date_entities := recognizer_result.entities.get(
+                        "$instance", {}
+                    ).get("datetime", []):
                         booking_details.travel_date = (
                             None
                         )  # Set when we get a timex format

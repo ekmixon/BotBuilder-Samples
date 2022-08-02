@@ -297,7 +297,7 @@ class MainDialog(ComponentDialog):
         return CardFactory.thumbnail_card(card)
 
     def get_choices(self):
-        card_options = [
+        return [
             Choice(value="Adaptive Card", synonyms=["adaptive"]),
             Choice(value="Animation Card", synonyms=["animation"]),
             Choice(value="Audio Card", synonyms=["audio"]),
@@ -309,5 +309,3 @@ class MainDialog(ComponentDialog):
             Choice(value="Video Card", synonyms=["video"]),
             Choice(value="All Cards", synonyms=["all"]),
         ]
-
-        return card_options

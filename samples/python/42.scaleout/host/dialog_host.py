@@ -53,10 +53,11 @@ class DialogHost:
             state[ComponentDialog.persisted_dialog_state] if state else None
         )
         dialog_state = (
-            None
-            if not dialog_state_property
-            else Unpickler().restore(json.loads(dialog_state_property))
+            Unpickler().restore(json.loads(dialog_state_property))
+            if dialog_state_property
+            else None
         )
+
 
         # A custom accessor is used to pass a handle on the state to the dialog system.
         accessor = RefAccessor(dialog_state)
@@ -66,7 +67,7 @@ class DialogHost:
 
         # Serialize the result (available as Value on the accessor), and put its value back into a new json object.
         return {
-            ComponentDialog.persisted_dialog_state: None
-            if not accessor.value
-            else encode(accessor.value)
+            ComponentDialog.persisted_dialog_state: encode(accessor.value)
+            if accessor.value
+            else None
         }

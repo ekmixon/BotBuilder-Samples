@@ -19,19 +19,19 @@ class FlightBookingRecognizer(Recognizer):
     ):
         self._recognizer = None
 
-        luis_is_configured = (
+        if luis_is_configured := (
             configuration.LUIS_APP_ID
             and configuration.LUIS_API_KEY
             and configuration.LUIS_API_HOST_NAME
-        )
-        if luis_is_configured:
+        ):
             # Set the recognizer options depending on which endpoint version you want to use e.g v2 or v3.
             # More details can be found in https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-api-v3
             luis_application = LuisApplication(
                 configuration.LUIS_APP_ID,
                 configuration.LUIS_API_KEY,
-                "https://" + configuration.LUIS_API_HOST_NAME,
+                f"https://{configuration.LUIS_API_HOST_NAME}",
             )
+
 
             options = LuisPredictionOptions()
             options.telemetry_client = telemetry_client or NullTelemetryClient()

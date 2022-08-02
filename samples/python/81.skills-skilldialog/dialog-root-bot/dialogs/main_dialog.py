@@ -287,9 +287,13 @@ class MainDialog(ComponentDialog):
 
         choices = []
         if skill.id == "DialogSkillBot":
-            choices.append(Choice(self._skill_action_book_flight))
-            choices.append(Choice(self._skill_action_book_flight_with_input_parameters))
-            choices.append(Choice(self._skill_action_get_weather))
+            choices.extend(
+                (
+                    Choice(self._skill_action_book_flight),
+                    Choice(self._skill_action_book_flight_with_input_parameters),
+                    Choice(self._skill_action_get_weather),
+                )
+            )
 
         return choices
 

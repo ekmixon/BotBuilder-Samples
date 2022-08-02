@@ -125,13 +125,14 @@ class CustomPromptBot(ActivityHandler):
                 flow.last_question_asked = Question.NONE
 
     def _validate_name(self, user_input: str) -> ValidationResult:
-        if not user_input:
-            return ValidationResult(
+        return (
+            ValidationResult(is_valid=True, value=user_input)
+            if user_input
+            else ValidationResult(
                 is_valid=False,
                 message="Please enter a name that contains at least one character.",
             )
-
-        return ValidationResult(is_valid=True, value=user_input)
+        )
 
     def _validate_age(self, user_input: str) -> ValidationResult:
         # Attempt to convert the Recognizer result to an integer. This works for "a dozen", "twelve", "12", and so on.

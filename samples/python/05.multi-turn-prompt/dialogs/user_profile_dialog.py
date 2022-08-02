@@ -153,8 +153,9 @@ class UserProfileDialog(ComponentDialog):
         self, step_context: WaterfallStepContext
     ) -> DialogTurnResult:
         step_context.values["picture"] = (
-            None if not step_context.result else step_context.result[0]
+            step_context.result[0] if step_context.result else None
         )
+
 
         # WaterfallStep always finishes with the end of the Waterfall or
         # with another dialog; here it is a Prompt Dialog.

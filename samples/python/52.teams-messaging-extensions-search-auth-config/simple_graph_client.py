@@ -33,10 +33,11 @@ class SimpleGraphClient:
             ]
         }
         response = self.client.post(
-            self.api_endpoint(f"search/query"),
+            self.api_endpoint("search/query"),
             headers={"Content-Type": "application/json"},
             json=search_filter,
         )
+
         response_json = json.loads(response.text)
         total_results = response_json["value"][0]["hitsContainers"][0]["total"]
         if int(total_results) > 0:

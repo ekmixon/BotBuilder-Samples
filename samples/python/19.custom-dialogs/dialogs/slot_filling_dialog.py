@@ -68,15 +68,14 @@ class SlotFillingDialog(Dialog):
         """
         state = self._get_persisted_values(dialog_context.active_dialog)
 
-        # Run through the list of slots until we find one that hasn't been filled yet.
-        unfilled_slot = None
-        for slot_detail in self.slots:
-            if slot_detail.name not in state:
-                unfilled_slot = slot_detail
-                break
-
-        # If we have an unfilled slot we will try to fill it
-        if unfilled_slot:
+        if unfilled_slot := next(
+            (
+                slot_detail
+                for slot_detail in self.slots
+                if slot_detail.name not in state
+            ),
+            None,
+        ):
             # The name of the slot we will be prompting to fill.
             dialog_context.active_dialog.state[self.SLOT_NAME] = unfilled_slot.name
 

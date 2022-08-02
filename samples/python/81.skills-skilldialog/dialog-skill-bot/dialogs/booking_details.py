@@ -18,7 +18,7 @@ class BookingDetails:
         self.unsupported_airports = unsupported_airports
 
     def from_json(self, json: dict):
-        self.destination = json.get("destination", None)
-        self.origin = json.get("origin", None)
-        self.travel_date = json.get("travel_date", None)
+        self.destination = json.get("destination")
+        self.origin = json.get("origin")
+        self.travel_date = json.get("travel_date")
         self.unsupported_airports = json.get("unsupported_airports", [])

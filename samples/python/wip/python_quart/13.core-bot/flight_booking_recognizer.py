@@ -11,12 +11,11 @@ class FlightBookingRecognizer(Recognizer):
     def __init__(self, configuration: Dict):
         self._recognizer = None
 
-        luis_is_configured = (
+        if luis_is_configured := (
             configuration["LUIS_APP_ID"]
             and configuration["LUIS_API_KEY"]
             and configuration["LUIS_API_HOST_NAME"]
-        )
-        if luis_is_configured:
+        ):
             luis_application = LuisApplication(
                 configuration["LUIS_APP_ID"],
                 configuration["LUIS_API_KEY"],

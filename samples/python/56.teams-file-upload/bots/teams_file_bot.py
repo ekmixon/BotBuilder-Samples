@@ -26,16 +26,18 @@ from botbuilder.schema.teams.additional_properties import ContentType
 class TeamsFileUploadBot(TeamsActivityHandler):
     async def on_message_activity(self, turn_context: TurnContext):
         message_with_file_download = (
-            False
-            if not turn_context.activity.attachments
-            else turn_context.activity.attachments[0].content_type == ContentType.FILE_DOWNLOAD_INFO
+            turn_context.activity.attachments[0].content_type
+            == ContentType.FILE_DOWNLOAD_INFO
+            if turn_context.activity.attachments
+            else False
         )
+
 
         if message_with_file_download:
             # Save an uploaded file locally
             file = turn_context.activity.attachments[0]
             file_download = FileDownloadInfo.deserialize(file.content)
-            file_path = "files/" + file.name
+            file_path = f"files/{file.name}"
 
             response = requests.get(file_download.download_url, allow_redirects=True)
             open(file_path, "wb").write(response.content)
@@ -49,7 +51,7 @@ class TeamsFileUploadBot(TeamsActivityHandler):
             # the user (Accept/Decline card).  If they accept, on_teams_file_consent_accept
             # will be called, otherwise on_teams_file_consent_decline.
             filename = "teams-logo.png"
-            file_path = "files/" + filename
+            file_path = f"files/{filename}"
             file_size = os.path.getsize(file_path)
             await self._send_file_card(turn_context, filename, file_size)
 
