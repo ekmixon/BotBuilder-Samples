@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "botbuilder": "~4.13.2",
-        "botbuilder-ai": "~4.13.2",
+        "botbuilder-ai": "~4.20.1",
         "botbuilder-ai-orchestrator": "~4.13.2",
         "botbuilder-azure": "~4.13.2",
         "botbuilder-dialogs": "~4.13.2",
