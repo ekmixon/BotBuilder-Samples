@@ -15,7 +15,7 @@
         "@babel/runtime": "^7.1.5",
         "botbuilder-core": "~4.13.2",
         "botframework-directlinejs": "~0.11.2",
-        "botframework-webchat": "4.5.0",
+        "botframework-webchat": "4.14.1",
         "core-js": "^3.0.1"
     },
     "devDependencies": {
@@ -29,7 +29,7 @@
         "clean-webpack-plugin": "^3.0.0",
         "copy-webpack-plugin": "^5.0.3",
         "core-js": "^3.1.4",
-        "css-loader": "^3.0.0",
+        "css-loader": "^5.0.0",
         "eslint": "^6.0.1",
         "eslint-config-standard": "^13.0.1",
         "eslint-plugin-import": "^2.18.0",
