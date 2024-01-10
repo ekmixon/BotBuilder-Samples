@@ -16,7 +16,7 @@
         "url": "https://github.com/Microsoft/BotBuilder-Samples.git"
     },
     "dependencies": {
-        "botbuilder": "~4.13.2",
+        "botbuilder": "~4.21.4",
         "botbuilder-ai": "~4.13.2",
         "botbuilder-dialogs": "~4.13.2",
         "dotenv": "^8.2.0",
