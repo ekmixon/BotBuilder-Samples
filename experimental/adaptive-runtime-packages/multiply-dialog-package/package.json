@@ -25,7 +25,7 @@
     },
     "devDependencies": {
         "adaptive-expressions": "~4.13.2",
-        "botbuilder": "~4.13.2",
+        "botbuilder": "~4.21.4",
         "botbuilder-dialogs": "~4.13.2",
         "botbuilder-dialogs-adaptive-runtime-core": "~4.13.2-preview",
         "botbuilder-dialogs-declarative": "~4.13.2-preview",
