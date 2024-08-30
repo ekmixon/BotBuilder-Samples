@@ -16,7 +16,8 @@
     "json-schema-ref-parser": "^9.0.7",
     "openapi-types": "^8.0.0",
     "seedrandom": "~3.0.5",
-    "swagger-parser": "^10.0.2"
+    "swagger-parser": "^10.0.2",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.0.0",
@@ -54,6 +55,9 @@
     "build": "tsc -b",
     "posttest": "tslint -p test -t stylish",
     "prepack": "rimraf lib tsconfig.tsbuildinfo && tsc -b",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\""
-  }
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
+  },
+  "snyk": true
 }
